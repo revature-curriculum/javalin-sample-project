@@ -42,7 +42,7 @@ public class Main {
       String task = ctx.formParam("task");
 
       for (Item item : todoList){
-        if (item.getTask().equals(task)){
+        if (item.getTask().equals(task) && item.getStatus() == false){
           item.finish();
           break;
         }
@@ -54,7 +54,7 @@ public class Main {
       String task = ctx.formParam("task");
 
       for (Item item : todoList){
-        if (item.getTask().equals(task)){
+        if (item.getTask().equals(task) && item.getStatus() == true){
           item.unfinish();
           break;
         }
