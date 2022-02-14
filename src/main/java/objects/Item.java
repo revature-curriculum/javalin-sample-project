@@ -21,5 +21,9 @@ public class Item {
     public void finish(){
         complete = true;
     }
+
+    public void unfinish(){
+        complete = false;
+    }
     
 }

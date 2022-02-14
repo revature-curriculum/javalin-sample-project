@@ -22,6 +22,10 @@ public class Main {
 
       app.post("/complete", completeTaskHandler);
 
+      app.get("/completedList", ctx -> ctx.render("completed.jte", Collections.singletonMap("todoList", todoList)));
+
+      app.post ("/incomplete", incompleteTaskHandler);
+
     }
 
     static Handler todoListHandler = ctx -> {
@@ -31,7 +35,7 @@ public class Main {
     static Handler addTaskHandler = ctx -> {
       String task = ctx.formParam("task");
       todoList.add(new Item(task));
-      ctx.render("success.jte");
+      ctx.render("index.jte", Collections.singletonMap("todoList", todoList));
     };
 
     static Handler completeTaskHandler = ctx -> {
@@ -44,6 +48,18 @@ public class Main {
         }
       }
       ctx.render("index.jte", Collections.singletonMap("todoList", todoList));
+    };
+
+    static Handler incompleteTaskHandler = ctx -> {
+      String task = ctx.formParam("task");
+
+      for (Item item : todoList){
+        if (item.getTask().equals(task)){
+          item.unfinish();
+          break;
+        }
+      }
+      ctx.render("completed.jte", Collections.singletonMap("todoList", todoList));
     };
   
 }
