@@ -42,6 +42,10 @@ I decided on a workflow:
     - Removing the parts not needed and modifying the code for the new purpose.
     - Testing and fixing errors.
 
+---
+
+### Steps
+
 1. Creating the Todo Class
     - The two fields (String task, boolean complete)
     - Constructor that takes in the task. I set the boolean to false on initialization because all the tasks will be incomplete at first.
